@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaceta Dental. Odontobebés</title>
-</head>
-<body>
-    <div class="wrapper header">
-
+<div class="wrapper header">
+    <p>Gaceta dental</p>
+    <img src="https://w7.pngwing.com/pngs/573/502/png-transparent-white-tooth-toothbrush-dentistry-tooth-love-text-heart-thumbnail.png" alt="logo diente"/>
+    <p>Odontobebés</p>
+</div>
+<div class="wrapper">
+    <div class="form">
+        <ul>
+            <li>
+                <label for="new_title" class="text_label">Título:</label>
+                <input type="text" id="new_title" class="text_input" [(ngModel)]="newTitle">
+            </li>
+            <li>
+                <label for="new_image" class="text_label">Imagen:</label>
+                <input type="text" id="new_image" class="text_input" [(ngModel)]="newImage">
+            </li>
+            <li>
+                <label for="new_content" class="text_label">Cuerpo:</label>
+                <input type="text" id="new_content" class="text_input" [(ngModel)]="newContent">
+            </li>
+            <li>
+                <label for="new_date" class="text_label">Fecha:</label>
+                <input type="text" id="new_date" class="text_input" [(ngModel)]="newDate">
+            </li>
+        </ul>
+        <button (click)="save()" class="save">Publicar</button>
     </div>
-    <div class="wrapper">
-        <div class="form">
-            <ul>
-                <li>
-                    <label for="new_title" class="text_label">Título:</label>
-                    <input type="text" id="new_title" class="text_input">
-                </li>
-                <li>
-                    <label for="new_image" class="text_label">Imagen:</label>
-                    <input type="text" id="new_image" class="text_input">
-                </li>
-                <li>
-                    <label for="new_content" class="text_label">Cuerpo:</label>
-                    <input type="text" id="new_content" class="text_input">
-                </li>
-                <li>
-                    <label for="new_date" class="text_label">Fecha:</label>
-                    <input type="text" id="new_date" class="text_input">
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="wrapper footer">
-
-    </div>
-</body>
-</html>
+    <section class="content">
+        <article *ngFor="let current_new of arrNews">
+            <div class="content_desc">
+                <figure>
+                    <img [src]="current_new.image" [alt]="current_new.title">
+                    <h3>{{current_new.title}}</h3>
+                    <p class="content_desc_text">{{current_new.content}}</p>
+                </figure>
+                <figcaption>{{current_new.date}}</figcaption>
+            </div>
+        </article>
+    </section>
+</div>
+<div class="wrapper footer"></div>
